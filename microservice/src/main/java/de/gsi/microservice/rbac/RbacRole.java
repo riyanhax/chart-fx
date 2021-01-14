@@ -1,5 +1,6 @@
 package de.gsi.microservice.rbac;
 
+import javax.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
@@ -56,7 +57,7 @@ public interface RbacRole<T extends RbacRole<T>> extends Role, Comparable<T> {
      */
     int getPriority();
 
-    default int compareTo(T otherRole) {
+    default int compareTo(@NotNull T otherRole) {
         if (otherRole == null || getPriority() > otherRole.getPriority()) {
             return 1;
         }
